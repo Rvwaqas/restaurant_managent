@@ -1,14 +1,16 @@
 "use client"
 
 import { FoodCard } from "./food-card"
-import { useRestaurant } from "../hooks/use-restaurant-data"
+import { useRestaurant } from "@/hooks/use-restaurant-data"
 
 export function FoodGrid() {
   const { state } = useRestaurant()
 
   const filteredItems = state.menuItems.filter((item) => {
-    const matchesCategory = state.selectedCategory === "All" || item.category === state.selectedCategory
-    const matchesSearch = item.name.toLowerCase().includes(state.searchQuery.toLowerCase())
+    const matchesCategory =
+      state.selectedCategory === "All" ||
+      item.category.trim().toLowerCase() === state.selectedCategory.trim().toLowerCase()
+    const matchesSearch = item.name.toLowerCase().includes((state.searchQuery || "").toLowerCase())
     return matchesCategory && matchesSearch && item.available
   })
 

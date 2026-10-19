@@ -5,7 +5,7 @@ import type React from "react"
 import { Search, Share2, Menu } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { useRestaurant } from "../hooks/use-restaurant-data"
+import { useRestaurant } from "@/hooks/use-restaurant-data"
 
 export function Header() {
   const { state, dispatch } = useRestaurant()

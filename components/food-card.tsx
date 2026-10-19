@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Minus, Plus } from "lucide-react"
 import type { MenuItem } from "../types/restaurant"
-import { useRestaurant } from "../hooks/use-restaurant-data"
+import { useRestaurant } from "@/hooks/use-restaurant-data"
 
 interface FoodCardProps {
   menuItem: MenuItem

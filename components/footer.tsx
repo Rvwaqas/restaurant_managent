@@ -1,6 +1,6 @@
 "use client"
 
-import { useRestaurant } from "../hooks/use-restaurant-data"
+import { useRestaurant } from "@/hooks/use-restaurant-data"
 import { OrderDetailsModal } from "./order-details-modal"
 
 export function Footer() {

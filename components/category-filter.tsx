@@ -1,7 +1,7 @@
 "use client"
 
 import { Grid, Coffee, Soup, UtensilsCrossed, ChefHat, Sandwich, Wine, Cookie } from "lucide-react"
-import { useRestaurant } from "../hooks/use-restaurant-data"
+import { useRestaurant } from "@/hooks/use-restaurant-data"
 
 const categories = [
   { icon: Grid, label: "All", key: "All" },
@@ -21,24 +21,30 @@ export function CategoryFilter() {
     if (categoryKey === "All") {
       return state.menuItems.filter((item) => item.available).length
     }
-    return state.menuItems.filter((item) => item.category === categoryKey && item.available).length
+    return state.menuItems.filter(
+      (item) => item.category.trim().toLowerCase() === categoryKey.trim().toLowerCase() && item.available
+    ).length
   }
 
   return (
     <div className="flex gap-3 mb-4 overflow-x-auto pb-2">
-      {categories.map((category, index) => (
-        <div
-          key={index}
-          onClick={() => dispatch({ type: "SET_CATEGORY", payload: category.key })}
-          className={`flex flex-col items-center p-3 rounded-xl min-w-[100px] ${
-            state.selectedCategory === category.key ? "bg-green-50 text-green-600" : "bg-white"
-          } border cursor-pointer hover:bg-green-50 transition-colors`}
-        >
-          <category.icon className="h-6 w-6 mb-1" />
-          <span className="text-sm font-medium">{category.label}</span>
-          <span className="text-xs text-gray-500">{getItemCount(category.key)} Items</span>
-        </div>
-      ))}
+      {categories.map((category, index) => {
+        const isSelected =
+          (state.selectedCategory || "All").trim().toLowerCase() === category.key.trim().toLowerCase()
+        return (
+          <div
+            key={index}
+            onClick={() => dispatch({ type: "SET_CATEGORY", payload: category.key })}
+            className={`flex flex-col items-center p-3 rounded-xl min-w-[100px] ${
+              isSelected ? "bg-green-50 text-green-600" : "bg-white"
+            } border cursor-pointer hover:bg-green-50 transition-colors`}
+          >
+            <category.icon className="h-6 w-6 mb-1" />
+            <span className="text-sm font-medium">{category.label}</span>
+            <span className="text-xs text-gray-500">{getItemCount(category.key)} Items</span>
+          </div>
+        )
+      })}
     </div>
   )
 }

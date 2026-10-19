@@ -194,7 +194,7 @@ const initialMenuItems: MenuItem[] = [
 const initialTables: Table[] = Array.from({ length: 12 }, (_, i) => ({
   number: `T${i + 1}`,
   status: "Available",
-  capacity: Math.floor(Math.random() * 6) + 2,
+  capacity: [4, 2, 6, 4, 8, 2, 4, 6, 2, 4, 6, 4][i] || 4,
 }))
 
 const initialState: RestaurantState = {

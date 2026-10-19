@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { X, User, MapPin, Phone, Clock, Package, Printer, ChefHat } from "lucide-react"
 import type { Order } from "../types/restaurant"
-import { useRestaurant } from "../hooks/use-restaurant-data"
+import { useRestaurant } from "@/hooks/use-restaurant-data"
 import { ThermalReceiptModal } from "./thermal-receipt-modal"
 
 interface OrderDetailsModalProps {
