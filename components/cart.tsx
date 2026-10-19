@@ -122,38 +122,47 @@ export function Cart() {
             <h2 className="text-xl font-bold mb-4">New Order</h2>
 
             <div className="space-y-3">
-              <div className="relative">
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <Input
-                  placeholder="Customer Name"
-                  value={state.currentOrder.customerName}
-                  onChange={handleCustomerNameChange}
-                  className="h-12 pl-10 pr-4 rounded-xl shadow-sm bg-gray-50 focus:ring-2 focus:ring-green-400 focus:border-green-400 border border-gray-200 text-base"
-                />
-              </div>
-
+              {/* Order Mode (Dine In on top, Take Away & Delivery commented out for now) */}
               <div className="flex gap-2">
-                {([
-                  { type: "Dine In", icon: Utensils },
-                  { type: "Take Away", icon: ShoppingBag },
-                  { type: "Delivery", icon: Truck },
-                ] as { type: OrderType; icon: any }[]).map(({ type, icon: Icon }) => (
-                  <button
-                    key={type}
-                    type="button"
-                    className={`flex-1 flex flex-col items-center justify-center py-3 rounded-xl shadow-sm border-2 transition-all duration-200 text-sm font-semibold gap-1
-                      ${state.currentOrder.orderType === type
-                        ? "bg-gradient-to-r from-green-400 to-green-600 text-white scale-105 border-green-500"
-                        : "bg-white text-gray-700 hover:bg-gray-100 border-gray-200"}
-                    `}
-                    onClick={() => handleOrderTypeChange(type as OrderType)}
-                  >
-                    <Icon className="w-5 h-5 mb-1" />
-                    {type}
-                  </button>
-                ))}
+                <button
+                  type="button"
+                  className="flex-1 flex items-center justify-center py-3 rounded-xl shadow-sm border-2 border-green-500 bg-gradient-to-r from-green-400 to-green-600 text-white font-semibold text-sm gap-2"
+                  onClick={() => handleOrderTypeChange("Dine In")}
+                >
+                  <Utensils className="w-5 h-5" />
+                  Dine In
+                </button>
+
+                {/* 
+                <button
+                  type="button"
+                  className={`flex-1 flex flex-col items-center justify-center py-3 rounded-xl shadow-sm border-2 transition-all duration-200 text-sm font-semibold gap-1
+                    ${state.currentOrder.orderType === "Take Away"
+                      ? "bg-gradient-to-r from-green-400 to-green-600 text-white scale-105 border-green-500"
+                      : "bg-white text-gray-700 hover:bg-gray-100 border-gray-200"}
+                  `}
+                  onClick={() => handleOrderTypeChange("Take Away")}
+                >
+                  <ShoppingBag className="w-5 h-5 mb-1" />
+                  Take Away
+                </button>
+
+                <button
+                  type="button"
+                  className={`flex-1 flex flex-col items-center justify-center py-3 rounded-xl shadow-sm border-2 transition-all duration-200 text-sm font-semibold gap-1
+                    ${state.currentOrder.orderType === "Delivery"
+                      ? "bg-gradient-to-r from-green-400 to-green-600 text-white scale-105 border-green-500"
+                      : "bg-white text-gray-700 hover:bg-gray-100 border-gray-200"}
+                  `}
+                  onClick={() => handleOrderTypeChange("Delivery")}
+                >
+                  <Truck className="w-5 h-5 mb-1" />
+                  Delivery
+                </button>
+                */}
               </div>
 
+              {/* Table Selection */}
               {state.currentOrder.orderType === "Dine In" && (
                 <div className="relative">
                   <Utensils className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -171,6 +180,17 @@ export function Cart() {
                   </Select>
                 </div>
               )}
+
+              {/* Customer Name (Moved below Dine In & Table Selection) */}
+              <div className="relative">
+                <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Input
+                  placeholder="Customer Name"
+                  value={state.currentOrder.customerName}
+                  onChange={handleCustomerNameChange}
+                  className="h-12 pl-10 pr-4 rounded-xl shadow-sm bg-gray-50 focus:ring-2 focus:ring-green-400 focus:border-green-400 border border-gray-200 text-base"
+                />
+              </div>
             </div>
           </div>
 
