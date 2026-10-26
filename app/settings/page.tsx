@@ -69,7 +69,12 @@ export default function SettingsPage() {
     <main className="flex-1 overflow-auto p-4">
       <div className="p-8 bg-gray-50 min-h-screen">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-extrabold tracking-tight">Settings</h1>
+          <div>
+            <h1 className="text-3xl font-extrabold tracking-tight">Account Settings</h1>
+            <p className="text-sm text-gray-500 mt-1">
+              Manage restaurant profile, operating hours, taxes, and system preferences.
+            </p>
+          </div>
           <div className="flex gap-2">
             <Button variant="outline" onClick={handleReset}>
               Reset to Default

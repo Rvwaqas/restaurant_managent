@@ -5,7 +5,6 @@ import "./globals.css"
 import { RestaurantProvider } from "@/hooks/use-restaurant-data"
 import { SidebarNav } from "@/components/sidebar-nav"
 import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -31,7 +30,6 @@ export default function RootLayout({
               <div className="flex-1 flex overflow-hidden">
                 {children}
               </div>
-              <Footer />
             </div>
           </div>
         </RestaurantProvider>

@@ -372,16 +372,6 @@ export function Cart() {
                 <Printer className="w-4 h-4" />
                 Print Customer Bill (Receipt)
               </Button>
-
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => setPrintMode("kot")}
-                className="w-full border-amber-300 text-amber-800 hover:bg-amber-50 font-bold py-3 rounded-xl flex items-center justify-center gap-2"
-              >
-                <ChefHat className="w-4 h-4 text-amber-600" />
-                Print Kitchen KOT
-              </Button>
             </div>
 
             <Button

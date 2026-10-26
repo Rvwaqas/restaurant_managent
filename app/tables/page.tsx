@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { useRestaurant } from "@/hooks/use-restaurant-data"
-import { Users, Clock, CheckCircle, DollarSign } from "lucide-react"
+import { Users, CheckCircle, DollarSign } from "lucide-react"
 
 export default function TablesPage() {
   const { state, dispatch } = useRestaurant()
@@ -92,37 +92,29 @@ export default function TablesPage() {
                         </p>
                       </div>
 
-                      <Badge className={getOrderStatusColor(order.status)}>{order.status}</Badge>
+                      {order.status !== "In Kitchen" && (
+                        <Badge className={getOrderStatusColor(order.status)}>{order.status}</Badge>
+                      )}
 
                       <div className="flex gap-2">
-                        {order.status === "New" && (
-                          <Button size="sm" onClick={() => updateOrderStatus(order.id, "In Kitchen")} className="flex-1">
-                            <Clock className="h-3 w-3 mr-1" />
-                            Start
-                          </Button>
-                        )}
-                        {order.status === "In Kitchen" && (
-                          <Button size="sm" onClick={() => updateOrderStatus(order.id, "Ready")} className="flex-1">
+                        {order.status !== "Delivered" && order.status !== "Paid" && (
+                          <Button
+                            size="sm"
+                            onClick={() => updateOrderStatus(order.id, "Delivered")}
+                            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
+                          >
                             <CheckCircle className="h-3 w-3 mr-1" />
-                            Ready
-                          </Button>
-                        )}
-                        {order.status === "Ready" && (
-                          <Button size="sm" onClick={() => updateOrderStatus(order.id, "Delivered")} className="flex-1">
                             Delivered
                           </Button>
                         )}
-                        {order.status === "Delivered" && (
-                          <Button
-                            size="sm"
-                            onClick={() => updateOrderStatus(order.id, "Paid")}
-                            className="flex-1"
-                            variant="outline"
-                          >
-                            <DollarSign className="h-3 w-3 mr-1" />
-                            Paid
-                          </Button>
-                        )}
+                        <Button
+                          size="sm"
+                          onClick={() => updateOrderStatus(order.id, "Paid")}
+                          className="flex-1 bg-green-600 hover:bg-green-700 text-white"
+                        >
+                          <DollarSign className="h-3 w-3 mr-1" />
+                          Paid
+                        </Button>
                       </div>
                     </div>
                   ) : (

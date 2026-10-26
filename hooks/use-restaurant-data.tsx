@@ -30,9 +30,9 @@ type RestaurantAction =
   | { type: "UPDATE_CART_QUANTITY"; payload: { id: string; quantity: number } }
   | { type: "CLEAR_CART" }
   | {
-      type: "SET_ORDER_INFO"
-      payload: { tableNumber: string; customerName: string; orderType: OrderType; paymentMethod?: "cash" | "card" | ""; deliveryAddress?: string; customerPhone?: string; notes?: string }
-    }
+    type: "SET_ORDER_INFO"
+    payload: { tableNumber: string; customerName: string; orderType: OrderType; paymentMethod?: "cash" | "card" | ""; deliveryAddress?: string; customerPhone?: string; notes?: string }
+  }
   | { type: "PLACE_ORDER" }
   | { type: "UPDATE_ORDER_STATUS"; payload: { orderId: string; status: Order["status"] } }
   | { type: "UPDATE_ORDER_INFO"; payload: { orderId: string; customerPhone?: string; deliveryAddress?: string; notes?: string } }
@@ -373,12 +373,12 @@ function restaurantReducer(state: RestaurantState, action: RestaurantAction): Re
         tables: state.tables.length === parseInt(maxTables)
           ? state.tables
           : Array.from({ length: parseInt(maxTables) }, (_, i) =>
-              state.tables[i] || {
-                number: `T${i + 1}`,
-                status: "Available",
-                capacity: Math.floor(Math.random() * 6) + 2,
-              }
-            ),
+            state.tables[i] || {
+              number: `T${i + 1}`,
+              status: "Available",
+              capacity: Math.floor(Math.random() * 6) + 2,
+            }
+          ),
       };
     }
     case "SET_CATEGORY":

@@ -191,7 +191,7 @@ export default function MenuItemsPage() {
           <div>
             <h1 className="text-2xl font-extrabold text-gray-900 flex items-center gap-3">
               <UtensilsCrossed className="h-7 w-7 text-green-600" />
-              Menu Management
+              Menu Settings
             </h1>
             <p className="text-sm text-gray-500 mt-1">
               Add new dishes, update rates, and manage daily item stock availability.
@@ -595,7 +595,7 @@ export default function MenuItemsPage() {
                 {/* Stock Switch */}
                 <div className="flex items-center justify-between p-3 rounded-xl bg-gray-50 border">
                   <div>
-                    <Label className="font-semibold block">Available in Kitchen</Label>
+                    <Label className="font-semibold block">Available in Menu</Label>
                     <p className="text-xs text-gray-500">
                       If toggled off, this dish will be hidden from cashiers.
                     </p>
