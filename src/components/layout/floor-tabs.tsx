@@ -43,6 +43,7 @@ export function FloorTabs({ className }: FloorTabsProps) {
   // If user has access to only 1 floor (e.g. waiter3), show static label
   if (accessibleFloors.length === 1) {
     const single = accessibleFloors[0];
+    const singleName = single.name.replace(/\s*\([^)]*\)/g, "");
     return (
       <div
         className={cn(
@@ -50,7 +51,7 @@ export function FloorTabs({ className }: FloorTabsProps) {
           className
         )}
       >
-        <span className="font-extrabold text-sm text-gray-900">{single.name}</span>
+        <span className="font-extrabold text-sm text-gray-900">{singleName}</span>
         <span
           className={cn(
             "text-[10px] font-extrabold px-1.5 py-0.5 rounded tracking-wider uppercase",
@@ -78,6 +79,8 @@ export function FloorTabs({ className }: FloorTabsProps) {
         const isActive = pathname.startsWith(`/${floor.slug}`);
         const isHalal = floor.menuType === "halal";
 
+        const displayName = floor.name.replace(/\s*\([^)]*\)/g, "");
+
         return (
           <Link
             key={floor.slug}
@@ -91,7 +94,7 @@ export function FloorTabs({ className }: FloorTabsProps) {
                 : "text-gray-600 hover:text-gray-900 hover:bg-white/60"
             )}
           >
-            <span>{floor.name}</span>
+            <span>{displayName}</span>
             <span
               className={cn(
                 "text-[10px] font-extrabold px-1.5 py-0.5 rounded tracking-wider uppercase",
