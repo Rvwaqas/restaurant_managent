@@ -1,0 +1,287 @@
+{
+  "list": {
+    "response": [
+      {
+        "id": "f1-t1",
+        "floorId": "f1",
+        "number": 1,
+        "capacity": 2,
+        "status": "free",
+        "isActive": true
+      },
+      {
+        "id": "f1-t2",
+        "floorId": "f1",
+        "number": 2,
+        "capacity": 4,
+        "status": "free",
+        "isActive": true
+      },
+      {
+        "id": "f1-t3",
+        "floorId": "f1",
+        "number": 3,
+        "capacity": 4,
+        "status": "occupied",
+        "isActive": true,
+        "currentOrderId": "mock-ord-f1-t3",
+        "runningTotal": 48.5,
+        "openedAt": "2026-11-05T08:20:24.706Z"
+      },
+      {
+        "id": "f1-t4",
+        "floorId": "f1",
+        "number": 4,
+        "capacity": 6,
+        "status": "occupied",
+        "isActive": true,
+        "currentOrderId": "mock-ord-f1-t4",
+        "runningTotal": 124,
+        "openedAt": "2026-11-05T07:38:24.706Z"
+      },
+      {
+        "id": "f1-t5",
+        "floorId": "f1",
+        "number": 5,
+        "capacity": 2,
+        "status": "free",
+        "isActive": true
+      },
+      {
+        "id": "f1-t6",
+        "floorId": "f1",
+        "number": 6,
+        "capacity": 4,
+        "status": "free",
+        "isActive": true
+      },
+      {
+        "id": "f1-t7",
+        "floorId": "f1",
+        "number": 7,
+        "capacity": 8,
+        "status": "free",
+        "isActive": true
+      },
+      {
+        "id": "f1-t8",
+        "floorId": "f1",
+        "number": 8,
+        "capacity": 4,
+        "status": "occupied",
+        "isActive": true,
+        "currentOrderId": "mock-ord-f1-t8",
+        "runningTotal": 18,
+        "openedAt": "2026-11-05T08:40:24.706Z"
+      },
+      {
+        "id": "f1-t9",
+        "floorId": "f1",
+        "number": 9,
+        "capacity": 6,
+        "status": "free",
+        "isActive": true
+      },
+      {
+        "id": "f1-t10",
+        "floorId": "f1",
+        "number": 10,
+        "capacity": 2,
+        "status": "free",
+        "isActive": true
+      },
+      {
+        "id": "f2-t1",
+        "floorId": "f2",
+        "number": 11,
+        "capacity": 2,
+        "status": "free",
+        "isActive": true
+      },
+      {
+        "id": "f2-t2",
+        "floorId": "f2",
+        "number": 12,
+        "capacity": 4,
+        "status": "free",
+        "isActive": true
+      },
+      {
+        "id": "f2-t3",
+        "floorId": "f2",
+        "number": 13,
+        "capacity": 4,
+        "status": "occupied",
+        "isActive": true,
+        "currentOrderId": "mock-ord-f2-t3",
+        "runningTotal": 48.5,
+        "openedAt": "2026-11-05T08:20:24.708Z"
+      },
+      {
+        "id": "f2-t4",
+        "floorId": "f2",
+        "number": 14,
+        "capacity": 6,
+        "status": "occupied",
+        "isActive": true,
+        "currentOrderId": "mock-ord-f2-t4",
+        "runningTotal": 124,
+        "openedAt": "2026-11-05T07:38:24.708Z"
+      },
+      {
+        "id": "f2-t5",
+        "floorId": "f2",
+        "number": 15,
+        "capacity": 2,
+        "status": "free",
+        "isActive": true
+      },
+      {
+        "id": "f2-t6",
+        "floorId": "f2",
+        "number": 16,
+        "capacity": 4,
+        "status": "free",
+        "isActive": true
+      },
+      {
+        "id": "f2-t7",
+        "floorId": "f2",
+        "number": 17,
+        "capacity": 8,
+        "status": "free",
+        "isActive": true
+      },
+      {
+        "id": "f2-t8",
+        "floorId": "f2",
+        "number": 18,
+        "capacity": 4,
+        "status": "occupied",
+        "isActive": true,
+        "currentOrderId": "mock-ord-f2-t8",
+        "runningTotal": 18,
+        "openedAt": "2026-11-05T08:40:24.708Z"
+      },
+      {
+        "id": "f2-t9",
+        "floorId": "f2",
+        "number": 19,
+        "capacity": 6,
+        "status": "free",
+        "isActive": true
+      },
+      {
+        "id": "f2-t10",
+        "floorId": "f2",
+        "number": 20,
+        "capacity": 2,
+        "status": "free",
+        "isActive": true
+      }
+    ]
+  },
+  "listByFloor": {
+    "response": [
+      {
+        "id": "f1-t1",
+        "floorId": "f1",
+        "number": 1,
+        "capacity": 2,
+        "status": "free",
+        "isActive": true
+      },
+      {
+        "id": "f1-t2",
+        "floorId": "f1",
+        "number": 2,
+        "capacity": 4,
+        "status": "free",
+        "isActive": true
+      },
+      {
+        "id": "f1-t3",
+        "floorId": "f1",
+        "number": 3,
+        "capacity": 4,
+        "status": "occupied",
+        "isActive": true,
+        "currentOrderId": "mock-ord-f1-t3",
+        "runningTotal": 48.5,
+        "openedAt": "2026-11-05T08:20:24.706Z"
+      },
+      {
+        "id": "f1-t4",
+        "floorId": "f1",
+        "number": 4,
+        "capacity": 6,
+        "status": "occupied",
+        "isActive": true,
+        "currentOrderId": "mock-ord-f1-t4",
+        "runningTotal": 124,
+        "openedAt": "2026-11-05T07:38:24.706Z"
+      },
+      {
+        "id": "f1-t5",
+        "floorId": "f1",
+        "number": 5,
+        "capacity": 2,
+        "status": "free",
+        "isActive": true
+      },
+      {
+        "id": "f1-t6",
+        "floorId": "f1",
+        "number": 6,
+        "capacity": 4,
+        "status": "free",
+        "isActive": true
+      },
+      {
+        "id": "f1-t7",
+        "floorId": "f1",
+        "number": 7,
+        "capacity": 8,
+        "status": "free",
+        "isActive": true
+      },
+      {
+        "id": "f1-t8",
+        "floorId": "f1",
+        "number": 8,
+        "capacity": 4,
+        "status": "occupied",
+        "isActive": true,
+        "currentOrderId": "mock-ord-f1-t8",
+        "runningTotal": 18,
+        "openedAt": "2026-11-05T08:40:24.706Z"
+      },
+      {
+        "id": "f1-t9",
+        "floorId": "f1",
+        "number": 9,
+        "capacity": 6,
+        "status": "free",
+        "isActive": true
+      },
+      {
+        "id": "f1-t10",
+        "floorId": "f1",
+        "number": 10,
+        "capacity": 2,
+        "status": "free",
+        "isActive": true
+      }
+    ]
+  },
+  "byId": {
+    "response": {
+      "id": "f1-t1",
+      "floorId": "f1",
+      "number": 1,
+      "capacity": 2,
+      "status": "free",
+      "isActive": true
+    }
+  }
+}

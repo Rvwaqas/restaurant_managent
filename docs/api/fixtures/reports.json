@@ -1,0 +1,357 @@
+{
+  "summary": {
+    "response": {
+      "grossSales": 4100,
+      "discounts": 0,
+      "netSales": 4100,
+      "tax": 0,
+      "serviceCharge": 0,
+      "grandTotal": 4100,
+      "billsCount": 3,
+      "itemsSold": 6,
+      "avgBill": 1366.6666666666667,
+      "voidedItemsCount": 1,
+      "voidedAmount": 500,
+      "comparison": {
+        "previousPeriod": {
+          "grossSales": 231150,
+          "discounts": 1818,
+          "netSales": 229332,
+          "tax": 0,
+          "serviceCharge": 0,
+          "grandTotal": 229332,
+          "billsCount": 102,
+          "itemsSold": 492,
+          "avgBill": 2248.3529411764707,
+          "voidedItemsCount": 3,
+          "voidedAmount": 3350
+        },
+        "changePercent": {
+          "grossSales": -98.22626000432619,
+          "discounts": -100,
+          "netSales": -98.21219890813319,
+          "tax": 0,
+          "serviceCharge": 0,
+          "grandTotal": -98.21219890813319,
+          "billsCount": -97.05882352941177,
+          "itemsSold": -98.78048780487805,
+          "avgBill": -39.214762876528354,
+          "voidedItemsCount": -66.66666666666666,
+          "voidedAmount": -85.07462686567165
+        }
+      }
+    }
+  },
+  "salesOverTime": {
+    "response": [
+      {
+        "bucket": "2026-11-05T06:00",
+        "grandTotal": 1650,
+        "billsCount": 1,
+        "netSales": 1650
+      },
+      {
+        "bucket": "2026-11-05T07:00",
+        "grandTotal": 1800,
+        "billsCount": 1,
+        "netSales": 1800
+      },
+      {
+        "bucket": "2026-11-05T08:00",
+        "grandTotal": 650,
+        "billsCount": 1,
+        "netSales": 650
+      }
+    ]
+  },
+  "byCategory": {
+    "response": [
+      {
+        "categoryId": "c2",
+        "name": "Spicy",
+        "floorId": "f1",
+        "qty": 3,
+        "amount": 2150,
+        "sharePercent": 52.4390243902439
+      },
+      {
+        "categoryId": "c5",
+        "name": "Spicy",
+        "floorId": "f2",
+        "qty": 2,
+        "amount": 1800,
+        "sharePercent": 43.90243902439025
+      },
+      {
+        "categoryId": "c3",
+        "name": "Drinks",
+        "floorId": "f1",
+        "qty": 1,
+        "amount": 150,
+        "sharePercent": 3.6585365853658534
+      }
+    ]
+  },
+  "byFloor": {
+    "response": [
+      {
+        "floorId": "f1",
+        "name": "Floor 1 (Halal)",
+        "billsCount": 2,
+        "grandTotal": 2300,
+        "avgBill": 1150
+      },
+      {
+        "floorId": "f2",
+        "name": "Floor 2 (Non-Halal)",
+        "billsCount": 1,
+        "grandTotal": 1800,
+        "avgBill": 1800
+      }
+    ]
+  },
+  "byWaiter": {
+    "response": [
+      {
+        "waiterId": "u2",
+        "name": "Ali Khan",
+        "billsCount": 2,
+        "itemsSold": 4,
+        "grandTotal": 2300,
+        "avgBill": 1150,
+        "sharePercent": 56.09756097560976
+      },
+      {
+        "waiterId": "u3",
+        "name": "Zainab Ahmed",
+        "billsCount": 1,
+        "itemsSold": 2,
+        "grandTotal": 1800,
+        "avgBill": 1800,
+        "sharePercent": 43.90243902439025
+      }
+    ]
+  },
+  "topItems": {
+    "response": [
+      {
+        "menuItemId": "mi4",
+        "name": "Chicken Biryani",
+        "categoryName": "Spicy",
+        "floorId": "f1",
+        "qty": 2,
+        "amount": 1300
+      },
+      {
+        "menuItemId": "mi12",
+        "name": "Pork Ribs",
+        "categoryName": "Spicy",
+        "floorId": "f2",
+        "qty": 1,
+        "amount": 950
+      },
+      {
+        "menuItemId": "mi5",
+        "name": "Chicken Karahi",
+        "categoryName": "Spicy",
+        "floorId": "f1",
+        "qty": 1,
+        "amount": 850
+      },
+      {
+        "menuItemId": "mi14",
+        "name": "Pepperoni Pizza",
+        "categoryName": "Spicy",
+        "floorId": "f2",
+        "qty": 1,
+        "amount": 850
+      },
+      {
+        "menuItemId": "mi7",
+        "name": "Lassi",
+        "categoryName": "Drinks",
+        "floorId": "f1",
+        "qty": 1,
+        "amount": 150
+      }
+    ]
+  },
+  "byPaymentMethod": {
+    "response": [
+      {
+        "method": "cash",
+        "billsCount": 2,
+        "amount": 2300,
+        "sharePercent": 56.09756097560976
+      },
+      {
+        "method": "card",
+        "billsCount": 1,
+        "amount": 1800,
+        "sharePercent": 43.90243902439025
+      }
+    ]
+  },
+  "peakHours": {
+    "response": [
+      {
+        "weekday": 4,
+        "hour": 11,
+        "billsCount": 1,
+        "grandTotal": 1650
+      },
+      {
+        "weekday": 4,
+        "hour": 12,
+        "billsCount": 1,
+        "grandTotal": 1800
+      },
+      {
+        "weekday": 4,
+        "hour": 13,
+        "billsCount": 1,
+        "grandTotal": 650
+      }
+    ]
+  },
+  "discounts": {
+    "response": []
+  },
+  "voidedItems": {
+    "response": [
+      {
+        "time": "2026-11-05T08:52:35.972Z",
+        "billNo": "B-0003",
+        "orderId": "mock-101",
+        "tableNumber": 1,
+        "floorName": "Floor 1 (Halal)",
+        "itemName": "Gulab Jamun",
+        "qty": 2,
+        "amount": 500,
+        "reason": "Customer changed mind",
+        "voidedBy": "Admin Manager"
+      }
+    ]
+  },
+  "dailyClosing": {
+    "response": {
+      "date": "2026-11-05",
+      "openedAt": "2026-11-05T06:52:24.785Z",
+      "closedAt": "2026-11-05T08:52:36.481Z",
+      "summary": {
+        "grossSales": 4100,
+        "discounts": 0,
+        "netSales": 4100,
+        "tax": 0,
+        "serviceCharge": 0,
+        "grandTotal": 4100,
+        "billsCount": 3,
+        "itemsSold": 6,
+        "avgBill": 1366.6666666666667,
+        "voidedItemsCount": 1,
+        "voidedAmount": 500
+      },
+      "byPaymentMethod": [
+        {
+          "method": "cash",
+          "billsCount": 2,
+          "amount": 2300,
+          "sharePercent": 56.09756097560976
+        },
+        {
+          "method": "card",
+          "billsCount": 1,
+          "amount": 1800,
+          "sharePercent": 43.90243902439025
+        }
+      ],
+      "byFloor": [
+        {
+          "floorId": "f1",
+          "name": "Floor 1 (Halal)",
+          "billsCount": 2,
+          "grandTotal": 2300,
+          "avgBill": 1150
+        },
+        {
+          "floorId": "f2",
+          "name": "Floor 2 (Non-Halal)",
+          "billsCount": 1,
+          "grandTotal": 1800,
+          "avgBill": 1800
+        }
+      ],
+      "byCategory": [
+        {
+          "categoryId": "c2",
+          "name": "Spicy",
+          "floorId": "f1",
+          "qty": 3,
+          "amount": 2150,
+          "sharePercent": 52.4390243902439
+        },
+        {
+          "categoryId": "c5",
+          "name": "Spicy",
+          "floorId": "f2",
+          "qty": 2,
+          "amount": 1800,
+          "sharePercent": 43.90243902439025
+        },
+        {
+          "categoryId": "c3",
+          "name": "Drinks",
+          "floorId": "f1",
+          "qty": 1,
+          "amount": 150,
+          "sharePercent": 3.6585365853658534
+        }
+      ],
+      "topItems": [
+        {
+          "menuItemId": "mi4",
+          "name": "Chicken Biryani",
+          "categoryName": "Spicy",
+          "floorId": "f1",
+          "qty": 2,
+          "amount": 1300
+        },
+        {
+          "menuItemId": "mi12",
+          "name": "Pork Ribs",
+          "categoryName": "Spicy",
+          "floorId": "f2",
+          "qty": 1,
+          "amount": 950
+        },
+        {
+          "menuItemId": "mi5",
+          "name": "Chicken Karahi",
+          "categoryName": "Spicy",
+          "floorId": "f1",
+          "qty": 1,
+          "amount": 850
+        },
+        {
+          "menuItemId": "mi14",
+          "name": "Pepperoni Pizza",
+          "categoryName": "Spicy",
+          "floorId": "f2",
+          "qty": 1,
+          "amount": 850
+        },
+        {
+          "menuItemId": "mi7",
+          "name": "Lassi",
+          "categoryName": "Drinks",
+          "floorId": "f1",
+          "qty": 1,
+          "amount": 150
+        }
+      ],
+      "discountsTotal": 0,
+      "voidedTotal": 500,
+      "openTablesCount": 2
+    }
+  }
+}

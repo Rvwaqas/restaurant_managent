@@ -1,0 +1,32 @@
+# Termux-specific Python requirements & installation strategy
+# Plan A (Native Termux Python):
+# 1. Install system toolchains & dependencies:
+#    pkg update -y
+#    pkg install -y python git openssl clang libffi rust
+# 2. Precompiled wheels for pydantic-core (avoids hours of on-device Rust compilation):
+#    Option A (TUR repo):
+#      pkg install -y tur-repo
+#      pkg install -y python-pydantic-core
+#    Option B (Prebuilt Termux wheels index):
+#      pip install --extra-index-url https://eutalix.github.io/android-pydantic-core/ pydantic-core==2.41.5
+# 3. Standard pure-Python and lightweight dependencies:
+fastapi==0.128.0
+uvicorn==0.40.0
+starlette==0.50.0
+pydantic==2.12.5
+pydantic-settings==2.12.0
+SQLAlchemy==2.0.45
+alembic==1.17.2
+PyYAML==6.0.3
+python-multipart==0.0.21
+websockets==16.0
+httpx==0.28.1
+segno==1.6.1
+
+# Plan B (Ubuntu / Debian under proot-distro):
+# In proot-distro Ubuntu, standard manylinux_2_28_aarch64 binary wheels run natively:
+#   proot-distro install ubuntu
+#   proot-distro login ubuntu
+#   apt update && apt install -y python3 python3-pip python3-venv openssl git
+#   python3 -m pip install -r requirements.lock
+

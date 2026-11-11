@@ -1,0 +1,1212 @@
+openapi: 3.1.0
+info:
+  title: Soufi Restaurant POS API
+  version: 1.0.0
+  description: >
+    Production backend REST and WebSocket specification for the Soufi Restaurant POS.
+    Powers waiter handheld tablets, cashier terminals, kitchen printers, and admin management.
+servers:
+  - url: /api
+    description: Local restaurant server
+
+security:
+  - bearerAuth: []
+
+paths:
+  /auth/login:
+    post:
+      summary: Staff login
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Invalid username or password
+
+  /auth/me:
+    get:
+      summary: Get current authenticated user profile
+      responses:
+        '200':
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized
+
+  /auth/logout:
+    post:
+      summary: Invalidate user session
+      responses:
+        '200':
+          description: Logged out successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+
+  /floors:
+    get:
+      summary: List all restaurant floors
+      responses:
+        '200':
+          description: List of floors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Floor'
+
+  /floors/{slug}:
+    get:
+      summary: Get floor by slug (floor-1 or floor-2)
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [floor-1, floor-2]
+      responses:
+        '200':
+          description: Floor details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Floor'
+        '404':
+          description: Floor not found
+
+  /tables:
+    get:
+      summary: List dining tables with status
+      parameters:
+        - name: floorId
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: includeInactive
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Tables list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Table'
+    post:
+      summary: Create a single table (Admin only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TableCreatePayload'
+      responses:
+        '201':
+          description: Table created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Table'
+        '409':
+          description: Table number already exists on floor
+
+  /tables/bulk:
+    post:
+      summary: Bulk generate numbered tables (Admin only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkCreateTablesPayload'
+      responses:
+        '200':
+          description: Bulk generation summary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkCreateTablesResult'
+
+  /tables/{id}:
+    get:
+      summary: Get table by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Table'
+        '404':
+          description: Table not found
+    put:
+      summary: Update table capacity or number (Admin only)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TableUpdatePayload'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Table'
+        '409':
+          description: Table number collision
+    delete:
+      summary: Delete or soft-delete table (Admin only)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteResult'
+        '409':
+          description: Cannot delete occupied table
+
+  /menu:
+    get:
+      summary: Get floor menu (categories and menu items)
+      parameters:
+        - name: floorId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FloorMenuResponse'
+
+  /categories:
+    get:
+      summary: List menu categories
+      parameters:
+        - name: floorId
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+    post:
+      summary: Create menu category (Admin only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryCreatePayload'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+
+  /categories/reorder:
+    post:
+      summary: Reorder categories for a floor (Admin only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [floorId, orderedIds]
+              properties:
+                floorId:
+                  type: string
+                orderedIds:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+
+  /categories/{id}:
+    put:
+      summary: Update category (Admin only)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryUpdatePayload'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+    delete:
+      summary: Delete category (Admin only)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteResult'
+        '409':
+          description: Category contains active menu items
+
+  /menu-items:
+    get:
+      summary: List menu items
+      parameters:
+        - name: floorId
+          in: query
+          schema:
+            type: string
+        - name: categoryId
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MenuItem'
+    post:
+      summary: Create new dish (Admin only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MenuItemCreatePayload'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MenuItem'
+
+  /menu-items/{id}/availability:
+    patch:
+      summary: Instant 86 item availability toggle
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [available]
+              properties:
+                available:
+                  type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MenuItem'
+
+  /menu-items/{id}/duplicate:
+    post:
+      summary: Clone dish across floors (Admin only)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DuplicateItemPayload'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MenuItem'
+
+  /printers:
+    get:
+      summary: List configured thermal printers
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Printer'
+    post:
+      summary: Add new thermal printer (Admin only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrinterCreatePayload'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Printer'
+
+  /printers/{id}/test:
+    post:
+      summary: Send test slip to printer via TCP socket
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestPrintResult'
+
+  /orders/send:
+    post:
+      summary: Place order / send batch to kitchen printers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendItemsPayload'
+      responses:
+        '200':
+          description: Batch placed and printed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendResult'
+
+  /orders/open:
+    get:
+      summary: Get active unpaid order for a table
+      parameters:
+        - name: tableId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/Order'
+                  - type: 'null'
+
+  /orders/reprint:
+    post:
+      summary: Reprint kitchen slip for category batch
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [orderId, batchNo, categoryId]
+              properties:
+                orderId:
+                  type: string
+                batchNo:
+                  type: integer
+                categoryId:
+                  type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrintJob'
+
+  /orders/{id}/void-item:
+    post:
+      summary: Void / cancel item from order (Admin only)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoidItemRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoidItemResult'
+        '403':
+          description: Admin authorization required to void items
+
+  /orders/{id}/pay:
+    post:
+      summary: Pay order, print cashier receipt, and free table
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayResult'
+        '409':
+          description: Order already paid
+        '422':
+          description: Insufficient cash tendered or no active items
+
+  /orders/{id}/reprint-bill:
+    post:
+      summary: Reprint customer bill receipt
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrintJob'
+        '400':
+          description: Order is not paid
+
+  /orders/paid:
+    get:
+      summary: List paid bills with pagination and filters
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: date
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: floorId
+          in: query
+          schema:
+            type: string
+        - name: paymentMethod
+          in: query
+          schema:
+            type: string
+            enum: [cash, card, online]
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListPaidResponse'
+
+  /reports/summary:
+    get:
+      summary: Executive sales & financial summary
+      parameters:
+        - name: from
+          in: query
+          schema:
+            type: string
+        - name: to
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportSummary'
+
+  /reports/daily-closing:
+    get:
+      summary: Daily closing Z-Report financial reconciliation
+      parameters:
+        - name: date
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DailyClosingReport'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    LoginRequest:
+      type: object
+      required: [username, password]
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+
+    LoginResponse:
+      type: object
+      required: [token, user, expiresAt]
+      properties:
+        token:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+        expiresAt:
+          type: string
+
+    User:
+      type: object
+      required: [id, username, name, role]
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+        name:
+          type: string
+        role:
+          type: string
+          enum: [admin, waiter]
+        allowedFloors:
+          type: array
+          items:
+            type: string
+            enum: [floor-1, floor-2]
+
+    Floor:
+      type: object
+      required: [id, slug, name, menuType]
+      properties:
+        id:
+          type: string
+        slug:
+          type: string
+          enum: [floor-1, floor-2]
+        name:
+          type: string
+        menuType:
+          type: string
+          enum: [halal, non-halal]
+        sortOrder:
+          type: integer
+        isActive:
+          type: boolean
+
+    Table:
+      type: object
+      required: [id, floorId, number, capacity, status]
+      properties:
+        id:
+          type: string
+        floorId:
+          type: string
+        number:
+          type: integer
+        capacity:
+          type: integer
+        status:
+          type: string
+          enum: [free, occupied]
+        currentOrderId:
+          type: string
+        isActive:
+          type: boolean
+
+    TableCreatePayload:
+      type: object
+      required: [floorId, number, capacity]
+      properties:
+        floorId:
+          type: string
+        number:
+          type: integer
+        capacity:
+          type: integer
+        isActive:
+          type: boolean
+
+    TableUpdatePayload:
+      type: object
+      properties:
+        number:
+          type: integer
+        capacity:
+          type: integer
+        isActive:
+          type: boolean
+
+    BulkCreateTablesPayload:
+      type: object
+      required: [floorId, fromNumber, toNumber, capacity]
+      properties:
+        floorId:
+          type: string
+        fromNumber:
+          type: integer
+        toNumber:
+          type: integer
+        capacity:
+          type: integer
+        isActive:
+          type: boolean
+
+    BulkCreateTablesResult:
+      type: object
+      required: [created, skipped, tables]
+      properties:
+        created:
+          type: integer
+        skipped:
+          type: array
+          items:
+            type: integer
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/Table'
+
+    Category:
+      type: object
+      required: [id, floorId, name, printerId, sortOrder]
+      properties:
+        id:
+          type: string
+        floorId:
+          type: string
+        name:
+          type: string
+        printerId:
+          type: string
+        sortOrder:
+          type: integer
+        isActive:
+          type: boolean
+
+    CategoryCreatePayload:
+      type: object
+      required: [floorId, name, printerId, sortOrder]
+      properties:
+        floorId:
+          type: string
+        name:
+          type: string
+        printerId:
+          type: string
+        sortOrder:
+          type: integer
+        isActive:
+          type: boolean
+
+    CategoryUpdatePayload:
+      type: object
+      properties:
+        name:
+          type: string
+        printerId:
+          type: string
+        sortOrder:
+          type: integer
+        isActive:
+          type: boolean
+
+    MenuItem:
+      type: object
+      required: [id, floorId, categoryId, name, price, available, isActive, sortOrder]
+      properties:
+        id:
+          type: string
+        floorId:
+          type: string
+        categoryId:
+          type: string
+        name:
+          type: string
+        price:
+          type: number
+        image:
+          type: string
+        description:
+          type: string
+        available:
+          type: boolean
+        isActive:
+          type: boolean
+        sortOrder:
+          type: integer
+
+    MenuItemCreatePayload:
+      type: object
+      required: [floorId, categoryId, name, price]
+      properties:
+        floorId:
+          type: string
+        categoryId:
+          type: string
+        name:
+          type: string
+        price:
+          type: number
+        image:
+          type: string
+        description:
+          type: string
+        available:
+          type: boolean
+        isActive:
+          type: boolean
+        sortOrder:
+          type: integer
+
+    DuplicateItemPayload:
+      type: object
+      required: [targetFloorId, targetCategoryId]
+      properties:
+        targetFloorId:
+          type: string
+        targetCategoryId:
+          type: string
+
+    FloorMenuResponse:
+      type: object
+      required: [categories, items]
+      properties:
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/MenuItem'
+
+    Printer:
+      type: object
+      required: [id, name, ip, port, isActive, role]
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        ip:
+          type: string
+        port:
+          type: integer
+        isActive:
+          type: boolean
+        role:
+          type: string
+          enum: [kitchen, cashier]
+
+    PrinterCreatePayload:
+      type: object
+      required: [name, ip, port, role]
+      properties:
+        name:
+          type: string
+        ip:
+          type: string
+        port:
+          type: integer
+        isActive:
+          type: boolean
+        role:
+          type: string
+          enum: [kitchen, cashier]
+
+    TestPrintResult:
+      type: object
+      required: [status, message]
+      properties:
+        status:
+          type: string
+          enum: [ok, failed]
+        message:
+          type: string
+
+    OrderItem:
+      type: object
+      required: [id, menuItemId, name, price, qty, batchNo, sentAt, categoryId]
+      properties:
+        id:
+          type: string
+        menuItemId:
+          type: string
+        name:
+          type: string
+        price:
+          type: number
+        qty:
+          type: integer
+        note:
+          type: string
+        batchNo:
+          type: integer
+        sentAt:
+          type: string
+        categoryId:
+          type: string
+        voided:
+          type: boolean
+        voidReason:
+          type: string
+        voidedAt:
+          type: string
+        voidedBy:
+          type: string
+
+    Order:
+      type: object
+      required: [id, tableId, floorId, waiterId, status, items, subtotal, tax, discount, total, createdAt]
+      properties:
+        id:
+          type: string
+        tableId:
+          type: string
+        floorId:
+          type: string
+        waiterId:
+          type: string
+        status:
+          type: string
+          enum: [open, paid, cancelled]
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
+        subtotal:
+          type: number
+        tax:
+          type: number
+        serviceCharge:
+          type: number
+        discount:
+          type: number
+        discountType:
+          type: string
+          enum: [amount, percent]
+        discountValue:
+          type: number
+        total:
+          type: number
+        createdAt:
+          type: string
+        billNo:
+          type: string
+        paymentMethod:
+          type: string
+          enum: [cash, card, online]
+        amountReceived:
+          type: number
+        changeDue:
+          type: number
+        paidAt:
+          type: string
+        paidBy:
+          type: string
+
+    SendItemsPayload:
+      type: object
+      required: [tableId, requestId, items]
+      properties:
+        tableId:
+          type: string
+        requestId:
+          type: string
+        items:
+          type: array
+          items:
+            type: object
+            required: [menuItemId, qty]
+            properties:
+              menuItemId:
+                type: string
+              qty:
+                type: integer
+              note:
+                type: string
+
+    PrintJob:
+      type: object
+      required: [printerId, printerName, status]
+      properties:
+        categoryId:
+          type: string
+        categoryName:
+          type: string
+        printerId:
+          type: string
+        printerName:
+          type: string
+        status:
+          type: string
+          enum: [printed, ok, failed]
+        error:
+          type: string
+
+    SendResult:
+      type: object
+      required: [order, batchNo, printJobs]
+      properties:
+        order:
+          $ref: '#/components/schemas/Order'
+        batchNo:
+          type: integer
+        printJobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrintJob'
+
+    PayRequest:
+      type: object
+      required: [orderId, requestId, method]
+      properties:
+        orderId:
+          type: string
+        requestId:
+          type: string
+        method:
+          type: string
+          enum: [cash, card, online]
+        discountType:
+          type: string
+          enum: [amount, percent]
+        discountValue:
+          type: number
+        amountReceived:
+          type: number
+
+    PayResult:
+      type: object
+      required: [order, billPrintJob, table]
+      properties:
+        order:
+          $ref: '#/components/schemas/Order'
+        billPrintJob:
+          $ref: '#/components/schemas/PrintJob'
+        table:
+          $ref: '#/components/schemas/Table'
+
+    VoidItemRequest:
+      type: object
+      required: [orderId, orderItemId, reason, requestId]
+      properties:
+        orderId:
+          type: string
+        orderItemId:
+          type: string
+        reason:
+          type: string
+        requestId:
+          type: string
+
+    VoidItemResult:
+      type: object
+      required: [order, printJob]
+      properties:
+        order:
+          $ref: '#/components/schemas/Order'
+        printJob:
+          $ref: '#/components/schemas/PrintJob'
+
+    ListPaidResponse:
+      type: object
+      required: [orders, total, page, limit, totalPages]
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+        total:
+          type: integer
+        page:
+          type: integer
+        limit:
+          type: integer
+        totalPages:
+          type: integer
+
+    ReportSummary:
+      type: object
+      required: [grossSales, discounts, netSales, tax, serviceCharge, grandTotal, totalOrders, averageOrderValue]
+      properties:
+        grossSales:
+          type: number
+        discounts:
+          type: number
+        netSales:
+          type: number
+        tax:
+          type: number
+        serviceCharge:
+          type: number
+        grandTotal:
+          type: number
+        totalOrders:
+          type: integer
+        averageOrderValue:
+          type: number
+
+    DailyClosingReport:
+      type: object
+      required: [date, summary, byPaymentMethod, byFloor, byCategory]
+      properties:
+        date:
+          type: string
+        summary:
+          $ref: '#/components/schemas/ReportSummary'
+        byPaymentMethod:
+          type: array
+          items:
+            type: object
+        byFloor:
+          type: array
+          items:
+            type: object
+        byCategory:
+          type: array
+          items:
+            type: object
+
+    DeleteResult:
+      type: object
+      required: [success, id]
+      properties:
+        success:
+          type: boolean
+        id:
+          type: string
+        softDeleted:
+          type: boolean
+
+x-websocket:
+  url: /ws?token={jwt}
+  description: Real-time event gateway for table changes, item status updates, and printer alerts.
+  events:
+    - name: table.updated
+      description: Emitted when table status, running total, or current order changes.
+    - name: order.updated
+      description: Emitted when items are sent or voided on an order.
+    - name: bill.paid
+      description: Emitted when payment completes and table is released.
+    - name: menu.changed
+      description: Emitted when item availability (86) or menu item details are updated.
+    - name: printer.status
+      description: Emitted when a printer experiences offline/network failure or returns online.
+

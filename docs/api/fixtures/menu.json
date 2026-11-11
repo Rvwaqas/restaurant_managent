@@ -1,0 +1,219 @@
+{
+  "byFloor": {
+    "response": [
+      {
+        "id": "mi1",
+        "floorId": "f1",
+        "categoryId": "c1",
+        "name": "Gulab Jamun",
+        "price": 250,
+        "available": true,
+        "isActive": true,
+        "sortOrder": 1,
+        "image": "https://images.unsplash.com/photo-1666190064034-98ab5f3a6c8a?w=300&h=200&fit=crop"
+      },
+      {
+        "id": "mi4",
+        "floorId": "f1",
+        "categoryId": "c2",
+        "name": "Chicken Biryani",
+        "price": 650,
+        "available": true,
+        "isActive": true,
+        "sortOrder": 1,
+        "image": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=300&h=200&fit=crop"
+      },
+      {
+        "id": "mi7",
+        "floorId": "f1",
+        "categoryId": "c3",
+        "name": "Lassi",
+        "price": 180,
+        "available": true,
+        "isActive": true,
+        "sortOrder": 1
+      },
+      {
+        "id": "mi2",
+        "floorId": "f1",
+        "categoryId": "c1",
+        "name": "Kheer",
+        "price": 300,
+        "available": true,
+        "isActive": true,
+        "sortOrder": 2,
+        "image": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=300&h=200&fit=crop"
+      },
+      {
+        "id": "mi5",
+        "floorId": "f1",
+        "categoryId": "c2",
+        "name": "Chicken Karahi",
+        "price": 850,
+        "available": true,
+        "isActive": true,
+        "sortOrder": 2,
+        "image": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=300&h=200&fit=crop"
+      },
+      {
+        "id": "mi8",
+        "floorId": "f1",
+        "categoryId": "c3",
+        "name": "Mint Lemonade",
+        "price": 150,
+        "available": true,
+        "isActive": true,
+        "sortOrder": 2
+      },
+      {
+        "id": "mi3",
+        "floorId": "f1",
+        "categoryId": "c1",
+        "name": "Jalebi",
+        "price": 200,
+        "available": true,
+        "isActive": true,
+        "sortOrder": 3
+      },
+      {
+        "id": "mi6",
+        "floorId": "f1",
+        "categoryId": "c2",
+        "name": "Seekh Kebab",
+        "price": 450,
+        "available": true,
+        "isActive": true,
+        "sortOrder": 3
+      }
+    ]
+  },
+  "byId": {
+    "response": {
+      "id": "mi1",
+      "floorId": "f1",
+      "categoryId": "c1",
+      "name": "Gulab Jamun",
+      "price": 250,
+      "available": true,
+      "isActive": true,
+      "sortOrder": 1,
+      "image": "https://images.unsplash.com/photo-1666190064034-98ab5f3a6c8a?w=300&h=200&fit=crop"
+    }
+  },
+  "floorMenu": {
+    "response": {
+      "categories": [
+        {
+          "id": "c1",
+          "floorId": "f1",
+          "name": "Sweet",
+          "printerId": "p1",
+          "sortOrder": 1,
+          "isActive": true
+        },
+        {
+          "id": "c2",
+          "floorId": "f1",
+          "name": "Spicy",
+          "printerId": "p2",
+          "sortOrder": 2,
+          "isActive": true
+        },
+        {
+          "id": "c3",
+          "floorId": "f1",
+          "name": "Drinks",
+          "printerId": "p3",
+          "sortOrder": 3,
+          "isActive": true
+        }
+      ],
+      "items": [
+        {
+          "id": "mi1",
+          "floorId": "f1",
+          "categoryId": "c1",
+          "name": "Gulab Jamun",
+          "price": 250,
+          "available": true,
+          "isActive": true,
+          "sortOrder": 1,
+          "image": "https://images.unsplash.com/photo-1666190064034-98ab5f3a6c8a?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "mi2",
+          "floorId": "f1",
+          "categoryId": "c1",
+          "name": "Kheer",
+          "price": 300,
+          "available": true,
+          "isActive": true,
+          "sortOrder": 2,
+          "image": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "mi3",
+          "floorId": "f1",
+          "categoryId": "c1",
+          "name": "Jalebi",
+          "price": 200,
+          "available": true,
+          "isActive": true,
+          "sortOrder": 3
+        },
+        {
+          "id": "mi4",
+          "floorId": "f1",
+          "categoryId": "c2",
+          "name": "Chicken Biryani",
+          "price": 650,
+          "available": true,
+          "isActive": true,
+          "sortOrder": 1,
+          "image": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "mi5",
+          "floorId": "f1",
+          "categoryId": "c2",
+          "name": "Chicken Karahi",
+          "price": 850,
+          "available": true,
+          "isActive": true,
+          "sortOrder": 2,
+          "image": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "mi6",
+          "floorId": "f1",
+          "categoryId": "c2",
+          "name": "Seekh Kebab",
+          "price": 450,
+          "available": true,
+          "isActive": true,
+          "sortOrder": 3
+        },
+        {
+          "id": "mi7",
+          "floorId": "f1",
+          "categoryId": "c3",
+          "name": "Lassi",
+          "price": 180,
+          "available": true,
+          "isActive": true,
+          "sortOrder": 1
+        },
+        {
+          "id": "mi8",
+          "floorId": "f1",
+          "categoryId": "c3",
+          "name": "Mint Lemonade",
+          "price": 150,
+          "available": true,
+          "isActive": true,
+          "sortOrder": 2
+        }
+      ]
+    }
+  }
+}

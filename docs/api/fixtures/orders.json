@@ -1,0 +1,258 @@
+{
+  "sendItems": {
+    "request": {
+      "tableId": "f1-t1",
+      "requestId": "req-fixture-send-01",
+      "items": [
+        {
+          "menuItemId": "mi1",
+          "qty": 2,
+          "note": "Extra sweet syrup"
+        },
+        {
+          "menuItemId": "mi4",
+          "qty": 1,
+          "note": "Spicy"
+        }
+      ]
+    },
+    "response": {
+      "order": {
+        "id": "mock-101",
+        "tableId": "f1-t1",
+        "floorId": "f1",
+        "waiterId": "u2",
+        "status": "open",
+        "items": [
+          {
+            "id": "mock-102",
+            "menuItemId": "mi1",
+            "name": "Gulab Jamun",
+            "price": 250,
+            "qty": 2,
+            "note": "Extra sweet syrup",
+            "batchNo": 1,
+            "sentAt": "2026-11-05T08:52:33.848Z",
+            "categoryId": "c1"
+          },
+          {
+            "id": "mock-103",
+            "menuItemId": "mi4",
+            "name": "Chicken Biryani",
+            "price": 650,
+            "qty": 1,
+            "note": "Spicy",
+            "batchNo": 1,
+            "sentAt": "2026-11-05T08:52:33.848Z",
+            "categoryId": "c2"
+          }
+        ],
+        "subtotal": 1150,
+        "tax": 0,
+        "discount": 0,
+        "total": 1150,
+        "createdAt": "2026-11-05T08:52:33.848Z"
+      },
+      "batchNo": 1,
+      "printJobs": [
+        {
+          "categoryId": "c1",
+          "categoryName": "Sweet",
+          "printerId": "p1",
+          "printerName": "Sweet Printer",
+          "status": "printed"
+        },
+        {
+          "categoryId": "c2",
+          "categoryName": "Spicy",
+          "printerId": "p2",
+          "printerName": "Spicy Printer",
+          "status": "printed"
+        }
+      ]
+    }
+  },
+  "openByTable": {
+    "response": {
+      "id": "mock-101",
+      "tableId": "f1-t1",
+      "floorId": "f1",
+      "waiterId": "u2",
+      "status": "open",
+      "items": [
+        {
+          "id": "mock-102",
+          "menuItemId": "mi1",
+          "name": "Gulab Jamun",
+          "price": 250,
+          "qty": 2,
+          "note": "Extra sweet syrup",
+          "batchNo": 1,
+          "sentAt": "2026-11-05T08:52:33.848Z",
+          "categoryId": "c1"
+        },
+        {
+          "id": "mock-103",
+          "menuItemId": "mi4",
+          "name": "Chicken Biryani",
+          "price": 650,
+          "qty": 1,
+          "note": "Spicy",
+          "batchNo": 1,
+          "sentAt": "2026-11-05T08:52:33.848Z",
+          "categoryId": "c2"
+        }
+      ],
+      "subtotal": 1150,
+      "tax": 0,
+      "discount": 0,
+      "total": 1150,
+      "createdAt": "2026-11-05T08:52:33.848Z"
+    }
+  },
+  "reprintKitchenSlip": {
+    "response": {
+      "categoryId": "c1",
+      "categoryName": "Sweet",
+      "printerId": "p1",
+      "printerName": "Sweet Printer",
+      "status": "printed"
+    }
+  },
+  "voidItem": {
+    "response": {
+      "order": {
+        "id": "mock-101",
+        "tableId": "f1-t1",
+        "floorId": "f1",
+        "waiterId": "u2",
+        "status": "open",
+        "items": [
+          {
+            "id": "mock-102",
+            "menuItemId": "mi1",
+            "name": "Gulab Jamun",
+            "price": 250,
+            "qty": 2,
+            "note": "Extra sweet syrup",
+            "batchNo": 1,
+            "sentAt": "2026-11-05T08:52:33.848Z",
+            "categoryId": "c1",
+            "voided": true,
+            "voidReason": "Customer changed mind",
+            "voidedAt": "2026-11-05T08:52:35.972Z",
+            "voidedBy": "Admin Manager"
+          },
+          {
+            "id": "mock-103",
+            "menuItemId": "mi4",
+            "name": "Chicken Biryani",
+            "price": 650,
+            "qty": 1,
+            "note": "Spicy",
+            "batchNo": 1,
+            "sentAt": "2026-11-05T08:52:33.848Z",
+            "categoryId": "c2"
+          }
+        ],
+        "subtotal": 650,
+        "tax": 0,
+        "discount": 0,
+        "total": 650,
+        "createdAt": "2026-11-05T08:52:33.848Z"
+      },
+      "printJob": {
+        "categoryId": "c1",
+        "categoryName": "Sweet",
+        "printerId": "p1",
+        "printerName": "Sweet Printer",
+        "status": "printed"
+      }
+    }
+  },
+  "pay": {
+    "request": {
+      "orderId": "mock-101",
+      "requestId": "req-fixture-pay-01",
+      "method": "cash",
+      "amountReceived": 1500
+    },
+    "response": {
+      "order": {
+        "id": "mock-101",
+        "tableId": "f1-t1",
+        "floorId": "f1",
+        "waiterId": "u2",
+        "status": "paid",
+        "items": [
+          {
+            "id": "mock-102",
+            "menuItemId": "mi1",
+            "name": "Gulab Jamun",
+            "price": 250,
+            "qty": 2,
+            "note": "Extra sweet syrup",
+            "batchNo": 1,
+            "sentAt": "2026-11-05T08:52:33.848Z",
+            "categoryId": "c1",
+            "voided": true,
+            "voidReason": "Customer changed mind",
+            "voidedAt": "2026-11-05T08:52:35.972Z",
+            "voidedBy": "Admin Manager"
+          },
+          {
+            "id": "mock-103",
+            "menuItemId": "mi4",
+            "name": "Chicken Biryani",
+            "price": 650,
+            "qty": 1,
+            "note": "Spicy",
+            "batchNo": 1,
+            "sentAt": "2026-11-05T08:52:33.848Z",
+            "categoryId": "c2"
+          }
+        ],
+        "subtotal": 650,
+        "tax": 0,
+        "discount": 0,
+        "total": 650,
+        "createdAt": "2026-11-05T08:52:33.848Z",
+        "billNo": "B-0003",
+        "paymentMethod": "cash",
+        "serviceCharge": 0,
+        "amountReceived": 2000,
+        "changeDue": 1350,
+        "paidAt": "2026-11-05T08:52:36.481Z",
+        "paidBy": "u1"
+      },
+      "billPrintJob": {
+        "categoryId": "cashier",
+        "categoryName": "Cashier",
+        "printerId": "prn-cashier",
+        "printerName": "Cashier Thermal Printer (192.168.1.103)",
+        "status": "printed"
+      },
+      "table": {
+        "id": "f1-t1",
+        "floorId": "f1",
+        "number": 1,
+        "capacity": 2,
+        "status": "free",
+        "isActive": true,
+        "runningTotal": 0
+      }
+    }
+  },
+  "reprintBill": {
+    "response": {
+      "categoryId": "cashier",
+      "categoryName": "Cashier",
+      "printerId": "prn-cashier",
+      "printerName": "Cashier Thermal Printer (192.168.1.103)",
+      "status": "printed"
+    }
+  },
+  "listPaid": {
+    "response": null
+  }
+}

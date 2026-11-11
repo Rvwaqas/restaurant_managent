@@ -1,0 +1,70 @@
+[project]
+name = "restaurant-pos"
+version = "1.0.0"
+description = "FastAPI Offline-First Restaurant POS Backend"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi==0.128.0",
+    "uvicorn==0.40.0",
+    "starlette==0.50.0",
+    "pydantic==2.12.5",
+    "pydantic-settings==2.12.0",
+    "pydantic_core==2.41.5",
+    "SQLAlchemy==2.0.45",
+    "alembic==1.17.2",
+    "PyYAML==6.0.3",
+    "python-multipart==0.0.21",
+    "websockets==16.0",
+    "segno==1.6.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==9.0.2",
+    "pytest-asyncio==1.3.0",
+    "pytest-timeout==2.4.0",
+    "httpx==0.28.1",
+    "anyio==4.12.0",
+    "ruff>=0.14.0",
+    "mypy>=1.15.0",
+    "shellcheck-py>=0.11.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+exclude = [
+    ".git",
+    ".next",
+    "node_modules",
+    "dist",
+    "backend/alembic",
+    "tmp_*",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = [
+    "E501", # line too long
+    "E402", # module level import not at top (needed for sys.path manipulation in scripts)
+    "E712", # comparison to True (standard in SQLAlchemy queries)
+    "B008", # FastAPI Depends in function defaults
+    "F841", # local variable assigned but never used
+]
+
+[tool.mypy]
+python_version = "3.12"
+mypy_path = "backend"
+ignore_missing_imports = true
+check_untyped_defs = false
+disallow_untyped_defs = false
+warn_return_any = false
+warn_unused_ignores = false
+exclude = [
+    "^backend/alembic/",
+    "^backend/tests/",
+    "^backend/app/seed/",
+    "seed\\.py$",
+    "^tmp_",
+]

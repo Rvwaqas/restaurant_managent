@@ -1,0 +1,19 @@
+#!/bin/sh
+# ==============================================================================
+# Restaurant POS - Unified Management CLI
+# ==============================================================================
+
+POS_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+PY_BIN="python3"
+
+if [ -x "${POS_ROOT}/venv/bin/python3" ]; then
+    PY_BIN="${POS_ROOT}/venv/bin/python3"
+elif [ -x "${POS_ROOT}/venv/bin/python" ]; then
+    PY_BIN="${POS_ROOT}/venv/bin/python"
+elif command -v python3 >/dev/null 2>&1; then
+    PY_BIN="python3"
+elif command -v python >/dev/null 2>&1; then
+    PY_BIN="python"
+fi
+
+exec "$PY_BIN" "${POS_ROOT}/scripts/pos_cli.py" "$@"

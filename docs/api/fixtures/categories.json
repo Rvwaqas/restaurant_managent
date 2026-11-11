@@ -1,0 +1,92 @@
+{
+  "list": {
+    "response": [
+      {
+        "id": "c1",
+        "floorId": "f1",
+        "name": "Sweet",
+        "printerId": "p1",
+        "sortOrder": 1,
+        "isActive": true
+      },
+      {
+        "id": "c2",
+        "floorId": "f1",
+        "name": "Spicy",
+        "printerId": "p2",
+        "sortOrder": 2,
+        "isActive": true
+      },
+      {
+        "id": "c3",
+        "floorId": "f1",
+        "name": "Drinks",
+        "printerId": "p3",
+        "sortOrder": 3,
+        "isActive": true
+      },
+      {
+        "id": "c4",
+        "floorId": "f2",
+        "name": "Sweet",
+        "printerId": "p1",
+        "sortOrder": 1,
+        "isActive": true
+      },
+      {
+        "id": "c5",
+        "floorId": "f2",
+        "name": "Spicy",
+        "printerId": "p2",
+        "sortOrder": 2,
+        "isActive": true
+      },
+      {
+        "id": "c6",
+        "floorId": "f2",
+        "name": "Drinks",
+        "printerId": "p3",
+        "sortOrder": 3,
+        "isActive": true
+      }
+    ]
+  },
+  "listByFloor": {
+    "response": [
+      {
+        "id": "c1",
+        "floorId": "f1",
+        "name": "Sweet",
+        "printerId": "p1",
+        "sortOrder": 1,
+        "isActive": true
+      },
+      {
+        "id": "c2",
+        "floorId": "f1",
+        "name": "Spicy",
+        "printerId": "p2",
+        "sortOrder": 2,
+        "isActive": true
+      },
+      {
+        "id": "c3",
+        "floorId": "f1",
+        "name": "Drinks",
+        "printerId": "p3",
+        "sortOrder": 3,
+        "isActive": true
+      }
+    ]
+  },
+  "byId": {
+    "response": {
+      "id": "c1",
+      "floorId": "f1",
+      "name": "Sweet",
+      "printerId": "p1",
+      "sortOrder": 1,
+      "isActive": true
+    }
+  }
+}

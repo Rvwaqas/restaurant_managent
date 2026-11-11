@@ -1,0 +1,54 @@
+{
+  "list": {
+    "response": [
+      {
+        "id": "p1",
+        "name": "Sweet Printer",
+        "ip": "192.168.1.100",
+        "port": 9100,
+        "isActive": true,
+        "role": "kitchen"
+      },
+      {
+        "id": "p2",
+        "name": "Spicy Printer",
+        "ip": "192.168.1.101",
+        "port": 9100,
+        "isActive": true,
+        "role": "kitchen"
+      },
+      {
+        "id": "p3",
+        "name": "Drinks Printer",
+        "ip": "192.168.1.102",
+        "port": 9100,
+        "isActive": true,
+        "role": "kitchen"
+      },
+      {
+        "id": "prn-cashier",
+        "name": "Cashier Thermal Printer",
+        "ip": "192.168.1.103",
+        "port": 9100,
+        "isActive": true,
+        "role": "cashier"
+      }
+    ]
+  },
+  "byId": {
+    "response": {
+      "id": "prn-cashier",
+      "name": "Cashier Thermal Printer",
+      "ip": "192.168.1.103",
+      "port": 9100,
+      "isActive": true,
+      "role": "cashier"
+    }
+  },
+  "testPrint": {
+    "response": {
+      "status": "ok",
+      "message": "Test print slip successfully sent to Cashier Thermal Printer (192.168.1.103:9100)."
+    }
+  }
+}

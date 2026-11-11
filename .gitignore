@@ -165,3 +165,21 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# POS Backend & Security Runtime Data
+certs/
+data/
+run/
+dist/
+tmp_*/
+*.db
+*.db-wal
+*.db-shm
+config/users.yaml
+.env
+.env.*
+!.env.example
+
+# E2E Live Test Outputs
+e2e-live/results/
+e2e-live/.stack.json

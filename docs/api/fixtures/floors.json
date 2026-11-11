@@ -1,0 +1,26 @@
+{
+  "list": {
+    "response": [
+      {
+        "id": "f1",
+        "slug": "floor-1",
+        "name": "Floor 1 (Halal)",
+        "menuType": "halal"
+      },
+      {
+        "id": "f2",
+        "slug": "floor-2",
+        "name": "Floor 2 (Non-Halal)",
+        "menuType": "non-halal"
+      }
+    ]
+  },
+  "bySlug": {
+    "response": {
+      "id": "f1",
+      "slug": "floor-1",
+      "name": "Floor 1 (Halal)",
+      "menuType": "halal"
+    }
+  }
+}

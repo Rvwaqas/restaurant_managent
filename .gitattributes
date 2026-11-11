@@ -1,0 +1,8 @@
+# Force LF line endings for shell scripts and python sources
+*.sh text eol=lf
+scripts/pos text eol=lf
+backend/scripts/pos text eol=lf
+scripts/10-pos-start.sh text eol=lf
+backend/scripts/10-pos-start.sh text eol=lf
+*.py text eol=lf
+

@@ -1,0 +1,41 @@
+{
+  "list": {
+    "response": [
+      {
+        "id": "u1",
+        "username": "admin",
+        "name": "Admin Manager",
+        "role": "admin"
+      },
+      {
+        "id": "u2",
+        "username": "waiter1",
+        "name": "Ali Khan",
+        "role": "waiter"
+      },
+      {
+        "id": "u3",
+        "username": "waiter2",
+        "name": "Zainab Ahmed",
+        "role": "waiter"
+      },
+      {
+        "id": "u4",
+        "username": "waiter3",
+        "name": "David Chen",
+        "role": "waiter",
+        "allowedFloors": [
+          "floor-1"
+        ]
+      }
+    ]
+  },
+  "byId": {
+    "response": {
+      "id": "u2",
+      "username": "waiter1",
+      "name": "Ali Khan",
+      "role": "waiter"
+    }
+  }
+}
