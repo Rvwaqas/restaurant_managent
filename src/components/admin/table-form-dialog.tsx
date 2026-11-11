@@ -101,7 +101,7 @@ export function TableFormDialog({
             {table ? `Edit Table T-${table.number}` : "Add New Table"}
           </DialogTitle>
           <p className="text-xs text-muted-foreground mt-0.5">
-            Configured for {floorId === "f1" ? "Floor 1 (Halal)" : "Floor 2 (Non-Halal)"}
+            Configured for {floorId === "f1" ? "Floor 1 (Arabic)" : "Floor 2 (Malaysian)"}
           </p>
         </DialogHeader>
 

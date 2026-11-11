@@ -12,8 +12,8 @@ export interface FloorOption {
 }
 
 const DEFAULT_FLOORS: FloorOption[] = [
-  { id: "f1", slug: "floor-1", name: "Floor 1", badge: "Halal" },
-  { id: "f2", slug: "floor-2", name: "Floor 2", badge: "Non-Halal" },
+  { id: "f1", slug: "floor-1", name: "Floor 1", badge: "Arabic" },
+  { id: "f2", slug: "floor-2", name: "Floor 2", badge: "Malaysian" },
 ];
 
 export interface FloorSwitcherProps {

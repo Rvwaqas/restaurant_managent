@@ -38,7 +38,7 @@ export function DuplicateItemDialog({
 }: DuplicateItemDialogProps) {
   const targetFloorId = currentFloorId === "f1" ? "f2" : "f1";
   const targetFloorLabel =
-    targetFloorId === "f1" ? "Floor 1 (Halal)" : "Floor 2 (Non-Halal)";
+    targetFloorId === "f1" ? "Floor 1 (Arabic)" : "Floor 2 (Malaysian)";
 
   const [targetCategories, setTargetCategories] = useState<Category[]>([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>("");
