@@ -21,17 +21,17 @@ def run_seed(db: Session, floor_2_csv_path: str = "backend/seed_data/floor-2-men
     # 1. Seed Floors
     f1 = db.query(Floor).filter(Floor.id == "f1").first()
     if not f1:
-        f1 = Floor(id="f1", slug="floor-1", name="Floor 1 (Halal)", menu_type="halal", sort_order=1, is_active=True)
+        f1 = Floor(id="f1", slug="floor-1", name="Floor 1 (Arabic)", menu_type="halal", sort_order=1, is_active=True)
         db.add(f1)
     else:
-        f1.name = "Floor 1 (Halal)"
+        f1.name = "Floor 1 (Arabic)"
 
     f2 = db.query(Floor).filter(Floor.id == "f2").first()
     if not f2:
-        f2 = Floor(id="f2", slug="floor-2", name="Floor 2 (Non-Halal)", menu_type="non-halal", sort_order=2, is_active=True)
+        f2 = Floor(id="f2", slug="floor-2", name="Floor 2 (Malaysian)", menu_type="non-halal", sort_order=2, is_active=True)
         db.add(f2)
     else:
-        f2.name = "Floor 2 (Non-Halal)"
+        f2.name = "Floor 2 (Malaysian)"
     db.flush()
 
     # 2. Seed Printers

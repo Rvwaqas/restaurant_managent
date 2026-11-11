@@ -12,13 +12,13 @@ const FLOORS_DATA: Record<string, Floor> = {
   "floor-1": {
     id: "f1",
     slug: "floor-1",
-    name: "Floor 1 (Halal)",
+    name: "Floor 1 (Arabic)",
     menuType: "halal",
   },
   "floor-2": {
     id: "f2",
     slug: "floor-2",
-    name: "Floor 2 (Non-Halal)",
+    name: "Floor 2 (Malaysian)",
     menuType: "non-halal",
   },
 };
