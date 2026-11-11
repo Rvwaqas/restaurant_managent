@@ -59,7 +59,7 @@ export function FloorTabs({ className }: FloorTabsProps) {
               : "bg-amber-100 text-amber-800"
           )}
         >
-          {single.menuType}
+          {single.menuType === "halal" ? "ARABIC" : "MALAYSIAN"}
         </span>
       </div>
     );
@@ -100,7 +100,7 @@ export function FloorTabs({ className }: FloorTabsProps) {
                   : "bg-amber-100 text-amber-800"
               )}
             >
-              {isHalal ? "HALAL" : "NON-HALAL"}
+              {isHalal ? "ARABIC" : "MALAYSIAN"}
             </span>
           </Link>
         );

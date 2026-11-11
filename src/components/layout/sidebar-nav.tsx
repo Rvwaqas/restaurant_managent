@@ -26,8 +26,8 @@ export function SidebarNav() {
   const [adminOpen, setAdminOpen] = useState(pathname.startsWith("/admin"));
 
   const navItems = [
-    { icon: TableBar, label: "Floor 1 (Halal)", href: "/floor-1" },
-    { icon: TableBar, label: "Floor 2 (Non-Halal)", href: "/floor-2" },
+    { icon: TableBar, label: "Floor 1 (Arabic)", href: "/floor-1" },
+    { icon: TableBar, label: "Floor 2 (Malaysian)", href: "/floor-2" },
     { icon: FlaskConical, label: "API Check (/dev)", href: "/dev/api-check" },
   ];
 

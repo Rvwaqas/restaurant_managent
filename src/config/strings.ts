@@ -33,8 +33,8 @@ export const STRINGS = {
     resumeSession: "Tap to Resume",
   },
   floors: {
-    halal: "Floor 1 (Halal)",
-    nonHalal: "Floor 2 (Non-Halal)",
+    halal: "Floor 1 (Arabic)",
+    nonHalal: "Floor 2 (Malaysian)",
     tableFree: "Free",
     tableOccupied: "Occupied",
     emptyFloor: "No active tables found on this floor.",

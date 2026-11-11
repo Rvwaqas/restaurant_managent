@@ -32,8 +32,8 @@ const ADMIN_NAV = [
 ];
 
 const QUICK_LINKS = [
-  { href: "/floor-1", label: "Floor 1 (Halal)", icon: Layers },
-  { href: "/floor-2", label: "Floor 2 (Non-Halal)", icon: Layers },
+  { href: "/floor-1", label: "Floor 1 (Arabic)", icon: Layers },
+  { href: "/floor-2", label: "Floor 2 (Malaysian)", icon: Layers },
   { href: "/dev/ui", label: "UI Design Showcase", icon: Palette },
   { href: "/dev/api-check", label: "API Diagnostics", icon: FlaskConical },
 ];
