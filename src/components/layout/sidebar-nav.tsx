@@ -28,7 +28,6 @@ export function SidebarNav() {
   const navItems = [
     { icon: TableBar, label: "Floor 1 (Arabic)", href: "/floor-1" },
     { icon: TableBar, label: "Floor 2 (Malaysian)", href: "/floor-2" },
-    { icon: FlaskConical, label: "API Check (/dev)", href: "/dev/api-check" },
   ];
 
   const adminItems = [

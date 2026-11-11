@@ -34,8 +34,6 @@ const ADMIN_NAV = [
 const QUICK_LINKS = [
   { href: "/floor-1", label: "Floor 1 (Arabic)", icon: Layers },
   { href: "/floor-2", label: "Floor 2 (Malaysian)", icon: Layers },
-  { href: "/dev/ui", label: "UI Design Showcase", icon: Palette },
-  { href: "/dev/api-check", label: "API Diagnostics", icon: FlaskConical },
 ];
 
 export default function AdminLayout({
@@ -130,11 +128,11 @@ export default function AdminLayout({
               })}
             </div>
 
-            {/* Quick Waiter / Dev Section */}
+            {/* Quick Waiter Floors Section */}
             <div className="space-y-1 pt-2 border-t border-border">
               {!sidebarCollapsed && (
                 <div className="px-3 text-[11px] font-extrabold uppercase tracking-wider text-muted-foreground mb-2">
-                  Waiter & Dev
+                  Waiter Floors
                 </div>
               )}
               {QUICK_LINKS.map((item) => {
