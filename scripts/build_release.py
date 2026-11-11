@@ -125,6 +125,8 @@ def should_exclude(rel_p: Path) -> bool:
         ".db",
         ".sqlite",
         ".sqlite3",
+        ".lock",
+        "server.lock",
         "data/logs",
         "data/backups",
         "data/uploads",
