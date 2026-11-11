@@ -1,5 +1,5 @@
 import type React from "react";
-import { UtensilsCrossed } from "lucide-react";
+import Image from "next/image";
 import { APP_NAME, APP_DESCRIPTION } from "@/config/app";
 
 export default function AuthLayout({
@@ -12,13 +12,19 @@ export default function AuthLayout({
       <div className="w-full max-w-md">
         {/* Brand Banner */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary text-white shadow-lg mb-4 ring-4 ring-primary/20">
-            <UtensilsCrossed className="w-8 h-8" />
+          <div className="relative inline-flex items-center justify-center w-24 h-24 rounded-full overflow-hidden shadow-xl mb-3 ring-4 ring-amber-500/30 bg-white">
+            <Image
+              src="/logo.jpeg"
+              alt={APP_NAME}
+              fill
+              className="object-cover"
+              priority
+            />
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-gray-900">
             {APP_NAME}
           </h1>
-          <p className="text-sm text-muted-foreground mt-1.5">
+          <p className="text-sm text-muted-foreground mt-1 font-medium">
             {APP_DESCRIPTION}
           </p>
         </div>

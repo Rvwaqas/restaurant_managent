@@ -5,8 +5,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "Soufi Restaurant POS Backend"
-    APP_NAME: str = "Soufi Restaurant"
+    PROJECT_NAME: str = "Nyaman Bah POS Backend"
+    APP_NAME: str = "Nyaman Bah"
     API_V1_STR: str = "/api"
     SECRET_KEY: str = "soufi-pos-super-secret-key-change-in-production-12345"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 12  # 12 hours shift token

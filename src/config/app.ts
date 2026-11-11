@@ -1,5 +1,5 @@
-export const APP_NAME = "Soufi Restaurant" as const;
-export const APP_DESCRIPTION = "Restaurant POS System" as const;
+export const APP_NAME = "Nyaman Bah" as const;
+export const APP_DESCRIPTION = "A Taste of Tawau - Restaurant POS System" as const;
 export const TAX_RATE = 0; // Default tax 0 as required
 export const SERVICE_CHARGE_RATE = 0; // Default service charge 0
 export const CURRENCY_SYMBOL = "RM" as const;

@@ -5,8 +5,8 @@
 
 export const STRINGS = {
   common: {
-    appName: "Soufi Restaurant",
-    tagline: "Restaurant POS System",
+    appName: "Nyaman Bah",
+    tagline: "A Taste of Tawau",
     retry: "Try Again",
     cancel: "Cancel",
     confirm: "Confirm",

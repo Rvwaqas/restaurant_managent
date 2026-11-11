@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   UtensilsCrossed,
@@ -64,8 +65,13 @@ export default function AdminLayout({
           {/* Brand Banner */}
           <div className="h-16 border-b border-border flex items-center justify-between px-4">
             <Link href="/admin/menu" className="flex items-center gap-3 overflow-hidden">
-              <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center shadow-sm shrink-0">
-                <UtensilsCrossed className="h-5 w-5" />
+              <div className="relative w-10 h-10 rounded-full overflow-hidden shadow-sm shrink-0 ring-2 ring-amber-500/20 bg-white">
+                <Image
+                  src="/logo.jpeg"
+                  alt={APP_NAME}
+                  fill
+                  className="object-cover"
+                />
               </div>
               {!sidebarCollapsed && (
                 <div className="truncate">

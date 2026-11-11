@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { UtensilsCrossed, Shield, LogOut, Settings } from "lucide-react";
 import { APP_NAME } from "@/config/app";
 import { FloorTabs } from "@/components/layout/floor-tabs";
@@ -31,8 +32,14 @@ export default function WaiterLayout({
         <header className="h-16 bg-white border-b border-border px-4 sm:px-6 flex items-center justify-between shrink-0 z-30 shadow-xs">
           {/* Left: Brand Icon + Title */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center shadow-sm">
-              <UtensilsCrossed className="h-5 w-5" />
+            <div className="relative w-10 h-10 rounded-full overflow-hidden shadow-sm shrink-0 ring-2 ring-amber-500/20 bg-white">
+              <Image
+                src="/logo.jpeg"
+                alt={APP_NAME}
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
             <div className="hidden sm:block">
               <h1 className="font-extrabold text-base tracking-tight text-gray-900 leading-none">

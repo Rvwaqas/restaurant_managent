@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   TableIcon as TableBar,
@@ -47,10 +48,15 @@ export function SidebarNav() {
     >
       {!sidebarCollapsed && (
         <div className="flex items-center gap-3 mb-8">
-          <div className="w-10 h-10 bg-gradient-to-br from-green-500 via-yellow-400 to-red-500 rounded-lg flex items-center justify-center shadow-sm">
-            <span className="text-white font-bold text-lg">S</span>
+          <div className="relative w-11 h-11 rounded-full overflow-hidden shadow-sm shrink-0 ring-2 ring-amber-500/20 bg-white">
+            <Image
+              src="/logo.jpeg"
+              alt={APP_NAME}
+              fill
+              className="object-cover"
+            />
           </div>
-          <span className="text-xl font-extrabold tracking-widest bg-gradient-to-r from-green-500 via-yellow-400 to-red-500 bg-clip-text text-transparent drop-shadow-md">
+          <span className="text-xl font-extrabold tracking-tight text-gray-900 truncate">
             {APP_NAME}
           </span>
         </div>

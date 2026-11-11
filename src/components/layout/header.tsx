@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Menu, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { APP_NAME } from "@/config/app";
@@ -17,7 +18,15 @@ export function Header() {
         <Button variant="ghost" size="icon" onClick={toggleSidebar} className="md:hidden" aria-label="Toggle navigation">
           <Menu className="h-5 w-5" />
         </Button>
-        <div className="font-extrabold text-lg text-gray-800 tracking-wide">
+        <div className="relative w-8 h-8 rounded-full overflow-hidden shadow-xs ring-1 ring-amber-500/20 shrink-0">
+          <Image
+            src="/logo.jpeg"
+            alt={APP_NAME}
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="font-extrabold text-lg text-gray-800 tracking-tight">
           {APP_NAME}
         </div>
       </div>
