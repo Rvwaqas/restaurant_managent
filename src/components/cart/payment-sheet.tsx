@@ -270,7 +270,7 @@ export function PaymentSheet({
                         : "text-gray-600 hover:text-gray-900"
                     }`}
                   >
-                    Rs
+                    RM
                   </button>
                   <button
                     type="button"

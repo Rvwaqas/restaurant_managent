@@ -13,6 +13,7 @@ import {
   Tooltip,
 } from "recharts";
 import { formatMoney } from "@/utils/money";
+import { CURRENCY_SYMBOL } from "@/config/app";
 import type { SalesOverTimeBucket } from "@/types";
 import { cn } from "@/lib/utils";
 
@@ -136,7 +137,7 @@ export function SalesChart({ data, groupBy = "day", loading = false }: SalesChar
                 tick={{ fontSize: 11, fill: "#6B7280" }}
                 tickLine={false}
                 axisLine={false}
-                tickFormatter={(val) => (metric === "amount" ? `Rs ${val >= 1000 ? `${(val / 1000).toFixed(0)}k` : val}` : String(val))}
+                tickFormatter={(val) => (metric === "amount" ? `${CURRENCY_SYMBOL} ${val >= 1000 ? `${(val / 1000).toFixed(0)}k` : val}` : String(val))}
               />
               <Tooltip
                 content={({ active, payload }) => {
@@ -179,7 +180,7 @@ export function SalesChart({ data, groupBy = "day", loading = false }: SalesChar
                 tick={{ fontSize: 11, fill: "#6B7280" }}
                 tickLine={false}
                 axisLine={false}
-                tickFormatter={(val) => (metric === "amount" ? `Rs ${val >= 1000 ? `${(val / 1000).toFixed(0)}k` : val}` : String(val))}
+                tickFormatter={(val) => (metric === "amount" ? `${CURRENCY_SYMBOL} ${val >= 1000 ? `${(val / 1000).toFixed(0)}k` : val}` : String(val))}
               />
               <Tooltip
                 content={({ active, payload }) => {

@@ -194,14 +194,14 @@ export function ItemFormDialog({
 
             <div className="space-y-1.5">
               <Label htmlFor="item-price" className="text-sm font-semibold text-gray-700">
-                Price (Rs) *
+                Price (RM) *
               </Label>
               <Input
                 id="item-price"
                 type="number"
                 step="0.01"
                 min="0"
-                placeholder="250.00"
+                placeholder="25.00"
                 {...register("price")}
               />
               {errors.price && (

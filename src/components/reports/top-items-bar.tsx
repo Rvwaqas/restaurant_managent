@@ -11,6 +11,7 @@ import {
 } from "recharts";
 import type { TopItemRow } from "@/types";
 import { formatMoney } from "@/utils/money";
+import { CURRENCY_SYMBOL } from "@/config/app";
 import { cn } from "@/lib/utils";
 
 interface TopItemsBarProps {
@@ -90,7 +91,7 @@ export function TopItemsBar({ data, loading = false }: TopItemsBarProps) {
               tick={{ fontSize: 11, fill: "#6B7280" }}
               tickLine={false}
               axisLine={{ stroke: "#E5E7EB" }}
-              tickFormatter={(val) => (mode === "amount" ? `Rs ${val >= 1000 ? `${(val / 1000).toFixed(0)}k` : val}` : String(val))}
+              tickFormatter={(val) => (mode === "amount" ? `${CURRENCY_SYMBOL} ${val >= 1000 ? `${(val / 1000).toFixed(0)}k` : val}` : String(val))}
             />
             <YAxis
               type="category"
